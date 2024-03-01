@@ -3,7 +3,7 @@ import imhHeader from "@/assets/imageHeader.png";
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center flex-col min-h-screen">
+    <main className="flex items-center justify-center flex-col min-h-[calc(100vh-88px)]">
       <h2 className="font-medium text-2xl mb-2">
         Gerênciando os seus projetos
       </h2>
