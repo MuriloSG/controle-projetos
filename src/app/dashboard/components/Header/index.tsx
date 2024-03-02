@@ -12,7 +12,7 @@ export function DashboardHeader() {
           Chamados
         </Link>
         <Link
-          href="/dashboard/custumer"
+          href="/dashboard/customer"
           className="text-white hover:font-bold duration-300"
         >
           Clientes
