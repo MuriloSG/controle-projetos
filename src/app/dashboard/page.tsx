@@ -4,7 +4,7 @@ import { authOptions } from "@/lib/auth";
 import { redirect} from "next/navigation";
 import Link from "next/link";
 import { TicketItem } from "./components/tickt";
-
+import prisma from "@/lib/prisma";
 
 export default async function Dashboard() {
 
@@ -14,34 +14,50 @@ export default async function Dashboard() {
     redirect("/");
   }
 
+  const tickets = await prisma.ticket.findMany({
+    where: {
+      userId: session.user.id,
+      status: "ABERTO"
+    },
+    include: {
+      custumer:true
+    }
+  });
+
+
   return (
     <Container>
       <main className="mt-9 mb-2">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold">Chamados</h1>
+          <h1 className="text-3xl font-bold">CHAMADOS</h1>
           <Link
             href="/dashboard/new"
             className="bg-blue-500 px-4 py-1 rounded text-white"
           >
-            Abrir Chamado
+            ABRIR CHAMADO
           </Link>
         </div>
 
         <table className="min-w-full my-2">
           <thead>
-            <tr >
+            <tr>
               <th className="font-medium text-left pl-1">CLIENTE</th>
-              <th className="font-medium text-left hidden sm:block">DATA CADASTRO</th>
+              <th className="font-medium text-left hidden sm:block">
+                DATA CADASTRO
+              </th>
               <th className="font-medium text-left">STATUS</th>
               <th className="font-medium text-left">#</th>
             </tr>
           </thead>
 
           <tbody>
-            <TicketItem/>
-            <TicketItem/>
+            {tickets.map((ticket) => (
+              <TicketItem
+                ticket={ticket}
+                customer={ticket.custumer}
+                key={ticket.id} />
+            ))}
           </tbody>
-
         </table>
       </main>
     </Container>
