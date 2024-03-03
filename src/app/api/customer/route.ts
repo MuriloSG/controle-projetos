@@ -6,14 +6,14 @@ import prisma from "@/lib/prisma";
 export async function POST(request: Request) {
 
   const session = await getServerSession(authOptions);
-  
+
   if (!session || !session.user) {
     return NextResponse.json({
       error: "Not authorized"
     }, { status: 401 });
   }
 
-  const { name, email, phone, address,userId } = await request.json();
+  const { name, email, phone, address, userId } = await request.json();
 
   try {
 
@@ -28,11 +28,58 @@ export async function POST(request: Request) {
     });
 
     return NextResponse.json({
-      message: "Cusmeter created sucessfully"
+      message: "Cliente criado com sucesso"
     });
   } catch (error) {
     return NextResponse.json({
       error: "Failed create new customer"
     }, { status: 400 });
   }
+}
+
+export async function DELETE(request: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session || !session.user) {
+    return NextResponse.json({
+      error: "Not authorized"
+    }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(request.url);
+  const userId = searchParams.get("id");
+
+  if (!userId) {
+    return NextResponse.json({
+      error: "Failed delete customer"
+    }, { status: 400 });
+  }
+
+  const findTickts = await prisma.ticket.findFirst({
+    where: {
+      custumerId: userId
+    }
+  });
+
+  if (findTickts) {
+    return NextResponse.json({
+      error: "Failed delete customer"
+    }, { status: 400 });
+  }
+
+  try {
+    await prisma.custumer.delete({
+      where: {
+        id: userId as string,
+      }
+    });
+    return NextResponse.json({
+      message: "Cliente deletado com sucesso"
+    });
+  } catch (error) {
+    return NextResponse.json({
+      error: "Failed delete customer"
+    }, { status: 400 });
+  }
+
 }
