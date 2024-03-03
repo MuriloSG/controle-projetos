@@ -55,10 +55,14 @@ export default async function Dashboard() {
               <TicketItem
                 ticket={ticket}
                 customer={ticket.custumer}
-                key={ticket.id} />
+                key={ticket.id}
+              />
             ))}
           </tbody>
         </table>
+        {tickets.length === 0 && (
+          <h1 className="text-3xl font-bold flex justify-center items-center mt-16">Nenhum chamado🙃</h1>
+        )}
       </main>
     </Container>
   );
