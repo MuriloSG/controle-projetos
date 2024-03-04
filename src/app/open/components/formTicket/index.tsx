@@ -46,7 +46,7 @@ export function FormTicket({customer}: FormTicketProps) {
     setValue("description", "");
     Swal.fire({
       icon: "success",
-      title: "Chamado criado"
+      title: "Chamado criado com sucesso"
     })
   }
 
