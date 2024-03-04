@@ -10,6 +10,10 @@
 3. **MongoDB:**
    - MongoDB é um banco de dados NoSQL orientado a documentos. Ele armazena dados em formato JSON e é altamente escalável, flexível e fácil de usar. MongoDB é amplamente utilizado em aplicativos que exigem manipulação de dados não estruturados ou semi-estruturados, proporcionando um modelo de dados dinâmico e escalabilidade horizontal.
 
+4. **Tailwind CSS:**
+   - Tailwind CSS é uma estrutura de estilo utilitária para a construção de interfaces. Em vez de fornecer componentes predefinidos, o Tailwind permite que você construa estilos diretamente em seus elementos HTML usando classes utilitárias. Isso oferece uma abordagem altamente customizável e eficiente para o design de interfaces.
+
+
 ## Getting Started
 
 Para iniciar o servidor de desenvolvimento, siga as instruções abaixo:
