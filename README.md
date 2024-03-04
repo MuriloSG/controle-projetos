@@ -22,19 +22,19 @@
 ## Funcionalidades do projeto:
   - **Home(Página inicial)**
    ![Home](public/home.jpg)
-  - **Criar chamado:**
-   ![Home](public/criarChamado.jpg)
   - **Chamados Abertos:**
    ![Chamados abertos](public/chamadosAbertos.jpg)
+  - **Criar chamado:**
+   ![Home](public/criarChamado.jpg)
   - **Clientes:**
    ![Clientes](public/clientes.jpg)
   - **Criar um cliente:**
    ![Criar cliente](public/criarClientes.jpg)
-  - ** Chamados fechados(concluídos):**
+  - **Chamados fechados(concluídos):**
    ![chamados concluídos](public/chamadosFechados.jpg)
-  - ** Criar chamado não logado:**
+  - **Criar chamado não logado:**
    ![Home](public/chamadoSemEstarLogado.jpg)
-  - ** Efetuar chamado: **
+  - **Efetuar chamado: **
    ![Home](public/criarChamadoNaoLogado.jpg)
 
 ## Getting Started
