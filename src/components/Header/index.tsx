@@ -18,11 +18,11 @@ export function Header() {
   }
 
   return (
-    <header className="w-full flex items-center px-2 py-4 bg-white h-20 shadow-sm">
+    <header className="w-full flex items-center px-2 py-4  bg-blue-50 h-20 shadow-sm">
       <div className="w-full flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/">
-          <h1 className="font-bold text-2x1 hover:tracking-widest duration-300">
-            <span className="text-blue-500">Painel de</span> Controle
+          <h1 className="font-bold text-2x1 hover:tracking-widest duration-300 text-blue-950">
+            <span className="text-cyan-600">Painel de</span> Controle
           </h1>
         </Link>
 

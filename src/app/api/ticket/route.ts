@@ -3,6 +3,46 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import prisma from "@/lib/prisma";
 
+export async function POST(request: Request) {
+  
+  const { customerId, name, description } = await request.json();
+
+  if (!customerId || !name || !description) {
+    return NextResponse.json({
+      error: "Failed create new ticket"
+    }, {
+      status: 400
+    });
+  }
+  try {
+    await prisma.ticket.create({
+      data: {
+        name: name,
+        descrption: description,
+        status: "ABERTO",
+        custumerId: customerId
+      }
+    });
+
+    return NextResponse.json({
+      message: "Chamado registrado com sucesso"
+    });
+    
+  } catch (error) {
+    return NextResponse.json({
+      error: "Failed create new ticket"
+    }, {
+      status: 400
+    });
+  }
+  
+
+  return NextResponse.json({
+    message: "Chegou"
+  })
+  
+}
+
 export async function PATCH(request: Request) {
   const session = await getServerSession(authOptions);
   if (!session || !session.user) {
@@ -35,8 +75,5 @@ export async function PATCH(request: Request) {
   } catch (error) {
     return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
   }
-  console.log(findTicket)
-
-  return NextResponse.json({message: "Chamada concluida"})
 }
 
