@@ -25,7 +25,7 @@ export function ModalTicket() {
           className="bg-white shadow-lg w-4/5 md:w-1/2 max-w-2xl p-3 rounded"
         >
           <div className="flex items-center justify-between mb-4">
-            <h1 className="font-bold text-lg md:text-3xl">Detalhe do modal</h1>
+            <h1 className="font-bold text-lg md:text-3xl">Detalhe do chamado</h1>
             <button
               onClick={handleModalVisible}
               className="bg-red-500 p-1 px-2 text-white rounded"
