@@ -36,11 +36,6 @@ export async function POST(request: Request) {
     });
   }
   
-
-  return NextResponse.json({
-    message: "Chegou"
-  })
-  
 }
 
 export async function PATCH(request: Request) {
@@ -75,5 +70,41 @@ export async function PATCH(request: Request) {
   } catch (error) {
     return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
   }
+}
+
+export async function DELETE(request: Request) {
+  const session = await getServerSession(authOptions);
+  if (!session || !session.user) {
+    return NextResponse.json({ error: "Not authorized" }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(request.url);
+  const ticketId = searchParams.get("id");
+
+  if (!ticketId) {
+    return NextResponse.json({ error: "Failed delete customer" }, {status: 400})
+  }
+
+  const findTicket = await prisma.ticket.findFirst({
+    where: {
+      id: ticketId,
+    }
+  });
+
+  if (!findTicket) {
+    return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
+  }
+
+  try {
+    await prisma.ticket.delete({
+      where: {
+        id: ticketId
+      }
+    });
+    return NextResponse.json({ message: "deu certo" })
+  } catch (error) {
+    return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
+  }
+  
 }
 

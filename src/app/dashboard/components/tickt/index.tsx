@@ -2,11 +2,12 @@
 
 import { CustomersProps } from "@/utils/customers.type";
 import { TicketsProps } from "@/utils/tickets.type";
-import { FiCheckSquare, FiFile } from "react-icons/fi";
+import { FiCheckSquare, FiFile, FiTrash } from "react-icons/fi";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";
 import { ModalContext } from "@/providers/modal";
+import Swal from "sweetalert2";
 
 interface TicketItemProps {
   ticket: TicketsProps;
@@ -14,16 +15,47 @@ interface TicketItemProps {
 }
 
 export function TicketItem({ ticket, customer }: TicketItemProps) {
+
   const router = useRouter();
+
   const { handleModalVisible, setDetailTicket } = useContext(ModalContext);
+
   async function handleChangeStatus() {
     try {
       const response = await api.patch("/api/ticket", {
         id: ticket.id,
       });
       router.refresh();
+      Swal.fire({
+        icon: "success",
+        title: "Chamada finalizado",
+      });
     } catch (error) {
-      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao finalizar chamado",
+      });
+    }
+  }
+
+  async function handleDeleteTicket() {
+    try {
+      const response = await api.delete("/api/ticket", {
+        params: {
+          id: ticket.id,
+        },
+      });
+      router.refresh();
+      Swal.fire({
+        icon: "success",
+        title: "Chamada excluido",
+      });
+
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao excluir chamado",
+      });
     }
   }
 
@@ -43,14 +75,28 @@ export function TicketItem({ ticket, customer }: TicketItemProps) {
           {ticket.created_at?.toLocaleDateString("pt-br")}
         </td>
         <td className="text-left">
-          <span className="bg-green-500 px-2 py-1 rounded">
-            {ticket.status}
-          </span>
+          {ticket.status === "ABERTO" && (
+            <span className="bg-green-500 px-2 py-1 rounded">
+              {ticket.status}
+            </span>
+          )}
+          {ticket.status === "FECHADO" && (
+            <span className="bg-red-500 px-2 py-1 rounded">
+              {ticket.status}
+            </span>
+          )}
         </td>
         <td className="text-left">
-          <button onClick={handleChangeStatus} className="mr-2">
-            <FiCheckSquare size={25} color="#9e8b8b" />
-          </button>
+          {ticket.status === "ABERTO" && (
+            <button onClick={handleChangeStatus} className="mr-2">
+              <FiCheckSquare size={25} color="#9e8b8b" />
+            </button>
+          )}
+          {ticket.status === "FECHADO" && (
+            <button onClick={handleDeleteTicket} className="mr-2">
+              <FiTrash size={25} color="#ff0000" />
+            </button>
+          )}
           <button onClick={handleOpenModal}>
             <FiFile size={25} color="#1200dc" />
           </button>

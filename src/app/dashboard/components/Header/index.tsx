@@ -19,7 +19,7 @@ export function DashboardHeader() {
         </Link>
 
         <Link
-          href="/dashboard/lock"
+          href="/dashboard/locktickets"
           className="text-white hover:font-bold duration-300"
         >
           Chamados concluidos
