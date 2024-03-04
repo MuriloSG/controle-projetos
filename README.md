@@ -13,6 +13,11 @@
 4. **Tailwind CSS:**
    - Tailwind CSS é uma estrutura de estilo utilitária para a construção de interfaces. Em vez de fornecer componentes predefinidos, o Tailwind permite que você construa estilos diretamente em seus elementos HTML usando classes utilitárias. Isso oferece uma abordagem altamente customizável e eficiente para o design de interfaces.
 
+5. **Zod:**
+   - O Zod é uma biblioteca voltada para TypeScript, oferecendo funcionalidades de declaração e validação de esquema. O termo "esquema" aqui refere-se de forma ampla a qualquer tipo de dados, desde simples strings até objetos aninhados complexos.
+
+6. **sweetalert2:**
+   - SweetAlert2 é uma biblioteca JavaScript popular para criar notificações e modais personalizadas, como alertas, confirmações e prompts. 
 
 ## Getting Started
 
