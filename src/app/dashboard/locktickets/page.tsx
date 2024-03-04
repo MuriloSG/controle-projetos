@@ -60,7 +60,7 @@ export default async function LockTickets() {
         </table>
         {tickets.length === 0 && (
           <h1 className="text-3xl font-bold flex justify-center items-center mt-16">
-            Nenhum chamado🙃
+            Nenhum chamado concluído🙃
           </h1>
         )}
       </main>
