@@ -34,7 +34,7 @@
    ![chamados concluídos](public/chamadosFechados.jpg)
   - **Criar chamado não logado:**
    ![Home](public/chamadoSemEstarLogado.jpg)
-  - **Efetuar chamado: **
+  - **Efetuar chamado:**
    ![Home](public/criarChamadoNaoLogado.jpg)
 
 ## Getting Started
