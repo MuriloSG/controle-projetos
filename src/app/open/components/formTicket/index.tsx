@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { api } from "@/lib/api";
 import { CustomerDataInfo } from "../../page";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const schema = z.object({
   name: z.string().min(1, "Nome obrigatorio"),
@@ -34,16 +35,19 @@ export function FormTicket({customer}: FormTicketProps) {
 
 
   async function handleRegisterTicket(data: FormData) {
-    setLoading(true)
+    setLoading(true);
     const response = await api.post("/api/ticket", {
       name: data.name,
       description: data.description,
       customerId: customer.id
     });
-
-    setLoading(false)
+    setLoading(false);
     setValue("name", "");
     setValue("description", "");
+    Swal.fire({
+      icon: "success",
+      title: "Chamado criado"
+    })
   }
 
   return (
