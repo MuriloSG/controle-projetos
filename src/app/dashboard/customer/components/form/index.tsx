@@ -7,6 +7,7 @@ import { Input } from "@/components/input";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 const schema = z.object({
   name: z.string().min(1, "Nome é obrigatório"),
@@ -41,8 +42,12 @@ export function NewCustomerForm({userId}: {userId: string}) {
     });
 
     setLoading(false);
-    router.replace("/dashboard/customer")
+    router.replace("/dashboard/customer");
     router.refresh();
+    Swal.fire({
+      icon: "success",
+      title: "Cliente cadastrado"
+    })
   }
 
   return (

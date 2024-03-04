@@ -3,6 +3,7 @@
 import { CustomersProps } from "@/utils/customers.type";
 import { api } from "@/lib/api";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 export function CardCustumer({ customers }: { customers: CustomersProps }) {
   const router = useRouter();
@@ -15,9 +16,17 @@ export function CardCustumer({ customers }: { customers: CustomersProps }) {
         },
       });
 
+      Swal.fire({
+        icon: "success",
+        title: "Cliente deletado"
+      });
       router.refresh();
+
     } catch (error) {
-      console.log(error)
+      Swal.fire({
+        icon: "error",
+        title: "Erro ao deletar cliente",
+      });
     }
   }
 
