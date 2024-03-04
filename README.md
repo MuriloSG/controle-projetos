@@ -22,6 +22,13 @@
 ## Funcionalidades do projeto:
   - **Home(Página inicial)**
    ![Home](public/home.jpg)
+   ![Home](public/chamadosAbertos.jpg)
+   ![Home](public/clientes.jpg)
+   ![Home](public/criarClientes.jpg)
+   ![Home](public/chamadosFechados.jpg)
+   ![Home](public/criarChamado.jpg)
+   ![Home](public/chamadoSemEstarLogado.jpg)
+   ![Home](public/criarChamadoNaoLogado.jpg)
 
 ## Getting Started
 
