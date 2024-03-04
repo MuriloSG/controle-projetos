@@ -19,6 +19,10 @@
 6. **sweetalert2:**
    - SweetAlert2 é uma biblioteca JavaScript popular para criar notificações e modais personalizadas, como alertas, confirmações e prompts. 
 
+## Funcionalidades do projeto:
+  - Home(Página inicial)
+  - ![Home](public/home.jpg)
+
 ## Getting Started
 
 Para iniciar o servidor de desenvolvimento, siga as instruções abaixo:
