@@ -1,5 +1,8 @@
 # Controle de Projetos
 
+## Descrição:
+O projeto tem como objetivo fazer o gerenciamento de projetos, e também fazer o controle das demandas de cada cliente, o projeto veio com uma imensa carga de conhecimento, nele foi possível aprender e implementar diversos conceitos do Next como, Server components, Clients comportonents, Server actions, Validação de formulários com o zod e a utilização de autenticação por meio do Google, ademais esse projeto veio para me ajudar a gerenciar os meus clientes.
+
 ## Ferramentas Utilizadas
 
 1. **Next.js:**
